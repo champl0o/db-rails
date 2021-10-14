@@ -2,7 +2,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
   def change
     create_table :items do |t|
       t.string :name
-      t.references :owner, null: false, foreign_key: { to_table: :users }
+      t.references :owner, index: true, null: false, foreign_key: { to_table: :users }
       t.references :booking, null: false, foreign_key: true
 
       t.timestamps

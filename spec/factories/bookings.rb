@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :booking do
-    user { nil }
+    user { user }
   end
 end

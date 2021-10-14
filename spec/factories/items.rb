@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
     name { "MyString" }
-    user { nil }
-    booking { nil }
+    user { user }
+    booking { booking }
   end
 end
