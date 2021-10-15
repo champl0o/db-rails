@@ -1,6 +1,6 @@
-1.times do |i|
-  User.create!(
-    email: "user#{i}@db.com",
-    password: '123456'
-  )
-end
+# frozen_string_literal: true
+
+User.create!(
+  email: 'user0@db.com',
+  password: '123456'
+)
