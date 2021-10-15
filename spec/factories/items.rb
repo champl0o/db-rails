@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name { "MyString" }
-    user { user }
-    booking { booking }
+    name { "Test" }
+    owner factory: :user
   end
 end

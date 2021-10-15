@@ -7,13 +7,14 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "validations" do
-    before { create(:user) }
+  describe "associations" do
+    it { should have_many(:items).class_name('Item').with_foreign_key('owner_id') }
+    it { should have_many(:bookings).class_name('Booking') }
+    it { should have_many(:reviews) }
+  end
 
-    context "presence" do
-      it 'validates calculations' do
-        expect(1+1).to eq(2)
-      end
-    end
+  describe "validations" do
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:password) }
   end
 end

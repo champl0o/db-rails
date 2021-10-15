@@ -3,4 +3,6 @@ class Item < ApplicationRecord
 
   has_many :booking
   has_many :reviews, as: :reviewable
+
+  validates_presence_of :name
 end

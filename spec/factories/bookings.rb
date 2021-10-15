@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :booking do
-    user { user }
+    user
+    item
   end
 end
