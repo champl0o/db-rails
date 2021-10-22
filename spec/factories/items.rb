@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :item do
-    name { "MyString" }
-    user { nil }
-    booking { nil }
+    name { 'Test' }
+    owner factory: :user
   end
 end

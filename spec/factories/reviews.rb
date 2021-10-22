@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :review do
-    description { "MyString" }
-    reviewable_id { "" }
-    reviewable_type { "MyString" }
+    description { 'MyString' }
+    reviewable { association :user }
   end
 end

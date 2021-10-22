@@ -1,6 +1,10 @@
-class Item < ApplicationRecord
-  belongs_to :user
-  belongs_to :booking
+# frozen_string_literal: true
 
-  has_many :reviews, as: :reviewable
+class Item < ApplicationRecord
+  belongs_to :owner, class_name: 'User'
+
+  has_many :booking, dependent: :destroy
+  has_many :reviews, as: :reviewable, dependent: :destroy
+
+  validates :name, presence: true
 end
