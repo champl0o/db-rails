@@ -10,12 +10,12 @@ RSpec.describe Item, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:owner).class_name('User') }
-    it { should have_many(:booking) }
-    it { should have_many(:reviews) }
+    it { is_expected.to belong_to(:owner).class_name('User') }
+    it { is_expected.to have_many(:booking) }
+    it { is_expected.to have_many(:reviews) }
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:name) }
   end
 end

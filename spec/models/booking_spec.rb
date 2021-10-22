@@ -10,7 +10,7 @@ RSpec.describe Booking, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:user) }
-    it { should belong_to(:item) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:item) }
   end
 end

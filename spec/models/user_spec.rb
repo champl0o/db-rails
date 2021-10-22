@@ -10,13 +10,13 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:items).class_name('Item').with_foreign_key('owner_id') }
-    it { should have_many(:bookings).class_name('Booking') }
-    it { should have_many(:reviews) }
+    it { is_expected.to have_many(:items).with_foreign_key('owner_id') }
+    it { is_expected.to have_many(:bookings) }
+    it { is_expected.to have_many(:reviews) }
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:password) }
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_presence_of(:password) }
   end
 end

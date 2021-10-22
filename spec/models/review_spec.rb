@@ -10,10 +10,10 @@ RSpec.describe Review, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:reviewable) }
+    it { is_expected.to belong_to(:reviewable) }
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:description) }
   end
 end

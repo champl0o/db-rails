@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateItems < ActiveRecord::Migration[6.1]
+class CreateItems < ActiveRecord::Migration[6.1] # :nodoc:
   def change
     create_table :items do |t|
       t.string :name
