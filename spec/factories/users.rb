@@ -5,6 +5,7 @@ FactoryBot.define do
     sequence :email do |n|
       "user#{n}@db.com"
     end
+    city
     password { '123456' }
   end
 end
