@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
+    it { is_expected.to belong_to(:city) }
     it { is_expected.to have_many(:items).with_foreign_key('owner_id') }
     it { is_expected.to have_many(:bookings) }
     it { is_expected.to have_many(:reviews) }

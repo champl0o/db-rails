@@ -14,6 +14,18 @@ RSpec.describe City, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:users) }
+  end
+
+  describe '#items' do
+    let(:city) { create(:city) }
+    let(:user) { create(:user, city: city) }
+    let(:item) { create(:item, owner: user) }
+
+    it 'return item list if there is one or more items' do
+      expect(city).to receive(:items).and_return(item)
+      result = city.items
+      expect(result).to eq(item)
+    end
   end
 end

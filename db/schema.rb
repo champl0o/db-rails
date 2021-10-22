@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_074438) do
+ActiveRecord::Schema.define(version: 2021_10_22_130853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,9 @@ ActiveRecord::Schema.define(version: 2021_10_22_074438) do
   end
 
   create_table "cities", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_cities_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -56,12 +54,14 @@ ActiveRecord::Schema.define(version: 2021_10_22_074438) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "city_id", null: false
+    t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bookings", "items"
   add_foreign_key "bookings", "users"
-  add_foreign_key "cities", "users"
   add_foreign_key "items", "users", column: "owner_id"
+  add_foreign_key "users", "cities"
 end

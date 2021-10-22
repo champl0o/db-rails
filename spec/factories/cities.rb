@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :city do
-    user
     name { 'TestCity' }
   end
 end
