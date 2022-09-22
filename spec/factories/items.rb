@@ -3,6 +3,12 @@
 FactoryBot.define do
   factory :item do
     name { 'Test' }
-    owner factory: :user
+    association :owner, factory: :user
+  end
+
+  trait :with_post do
+    after(:create) do |item|
+      create(:owner, items_id: [item.id])
+    end
   end
 end

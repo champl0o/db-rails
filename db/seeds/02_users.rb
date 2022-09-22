@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-City.all.each do |i|
+5.times do |i|
   User.create!(
     email: "user#{i}@db.com",
     password: '123456',
-    city: City.last
+    city: City.all.sample
   )
 end

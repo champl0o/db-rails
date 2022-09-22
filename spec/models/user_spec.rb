@@ -27,36 +27,33 @@ RSpec.describe User, type: :model do
     let(:booking) { create(:booking, item: item, user: user) }
 
     it 'should return true if item belongs to user bookings' do
-      expect(user).to receive(:item_reviewable?).with(item).and_return(true)
+      booking.reload
       result = user.item_reviewable?(item)
-      expect(result).to be_truthy
+      expect(result).to be true
     end
 
     let(:item) { create(:item) }
     it 'should return false if item doesnt belong to user bookings' do
-      expect(user).to receive(:item_reviewable?).with(item).and_return(false)
       result = user.item_reviewable?(item)
-      expect(result).to be_falsey
+      expect(result).to be false
     end
   end
 
   describe '#owner_reviewable?' do
     let(:user) { create(:user) }
-    let(:owner) { create(:user) }
-    let(:item) { create(:item, owner: owner) }
+    let(:item) { create(:item, :with_owner) }
     let(:booking) { create(:booking, item: item, user: user) }
 
     it 'should return true if user owns some booked items' do
-      expect(user).to receive(:owner_reviewable?).with(owner).and_return(true)
-      result = user.owner_reviewable?(owner)
-      expect(result).to be_truthy
+      booking.reload
+      result = user.owner_reviewable?(item.owner)
+      expect(result).to be true
     end
 
     let(:item) { create(:item) }
     it 'should return false if user doesnt own any booked items' do
-      expect(user).to receive(:owner_reviewable?).with(owner).and_return(false)
-      result = user.owner_reviewable?(owner)
-      expect(result).to be_falsey
+      result = user.owner_reviewable?(item.owner)
+      expect(result).to be false
     end
   end
 end
